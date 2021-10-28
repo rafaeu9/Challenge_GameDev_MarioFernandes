@@ -1,0 +1,4 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Challenge_GameDev_MarioFernandes.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Text.cpp
+  Challenge_GameDev_MarioFernandes.vcxproj -> C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Debug\Challenge_GameDev_MarioFernandes.exe
+          1 file(s) copied.
