@@ -8,6 +8,8 @@
 #include "SDL.h"
 #include "Input.h"
 #include "Text.h"
+#include "TextureManager.h"
+#include "Game.h"
 
 using namespace std;
 
@@ -46,5 +48,6 @@ private:
 
 	Input* input;
 
+	Game* game;
 };
 

@@ -73,7 +73,11 @@ void Aplication::Init(const char* title, int xpos, int ypos, int width, int heig
 		isRunning = false;
 	}
 
+	TextureManager::renderer = renderer;
+
 	input = new Input();	
+
+	game = new Game(renderer);
 
 	InsertedCashTxt = new Text(renderer, 20, " ", 0, 0);
 	RemovedCashTxt = new Text(renderer, 20, " ", 0, 30);
@@ -84,6 +88,19 @@ void Aplication::Init(const char* title, int xpos, int ypos, int width, int heig
 
 void Aplication::HandleEvents()
 {
+	if (input->KeyIsPressed(KEY_Z))
+	{
+		++InsertedCash;
+	}
+
+	if (input->KeyIsPressed(KEY_X))
+	{
+		RemovedCash += InsertedCash;
+		InsertedCash = 0;
+	}
+
+
+
 	if (input->KeyIsPressed(KEY_ESCAPE))
 		isRunning = false;
 	else if(input->event->type == SDL_QUIT)
@@ -152,9 +169,13 @@ void Aplication::Update()
 {
 	input->update();
 
+
+
 	InsertedCashTxt->UpdateText("Inserted Credits: " + to_string(InsertedCash));
 	RemovedCashTxt->UpdateText("Removed Credits: " + to_string(RemovedCash));
 	AmountOfTrysTxt->UpdateText("Amount of Plays: " + to_string(AmountOfTrys));
+
+	game->Update();
 }
 
 void Aplication::Draw()
@@ -169,12 +190,10 @@ void Aplication::Draw()
 	SDL_RenderCopy(renderer, RemovedCashTxt->GetTexture(), NULL, &RemovedCashTxt->textRect);
 	SDL_RenderCopy(renderer, AmountOfTrysTxt->GetTexture(), NULL, &AmountOfTrysTxt->textRect);
 	
-	
+	game->Draw();
 
 	//Draw on screen
 	SDL_RenderPresent(renderer);
-
-	getchar();
 }
 
 void Aplication::Clean()

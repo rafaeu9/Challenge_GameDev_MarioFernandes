@@ -35,30 +35,38 @@ void Input::update()
 		}
 
 	}
-	else if (event->type == SDL_KEYUP)
-	{
-		switch (event->key.keysym.sym)
-		{
-			// Start/Pause input
-		case SDLK_SPACE:
-			m_KeysPressed[KEY_SPACE] = false;
-			break;
-			// Cash In input
-		case SDLK_z:
-			m_KeysPressed[KEY_Z] = false;
-			break;
-			// Cash Out input
-		case SDLK_x:
-			m_KeysPressed[KEY_X] = false;
-			break;
-		default:
-			break;
-		}
-	}
+
+	//else if (event->type == SDL_KEYUP)
+	//{
+	//	switch (event->key.keysym.sym)
+	//	{
+	//		// Start/Pause input
+	//	case SDLK_SPACE:
+	//		m_KeysPressed[KEY_SPACE] = false;
+	//		break;
+	//		// Cash In input
+	//	case SDLK_z:
+	//		m_KeysPressed[KEY_Z] = false;
+	//		break;
+	//		// Cash Out input
+	//	case SDLK_x:
+	//		m_KeysPressed[KEY_X] = false;
+	//		break;
+	//	default:
+	//		break;
+	//	}
+	//}
 	
 }
 
 bool Input::KeyIsPressed(KEY_PRESSED_LIST key)
 {
-	return m_KeysPressed[key];
+	if (m_KeysPressed[key])
+	{
+		m_KeysPressed[key] = false;
+		return true;
+	}
+	else
+		return false;
+
 }
