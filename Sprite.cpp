@@ -5,17 +5,29 @@
 
 Sprite::Sprite()
 {
+	time = Timer();
+
+	position.x = 400;
+	position.y = 0;
+
 	//sprte position n screen
 	srcRect.x = srcRect.y = 0;
-	destRect.x = destRect.y = 0;
+	destRect.x = position.x;
+	destRect.y = position.y;
 	destRect.h = destRect.w = 64;
 }
 
 Sprite::Sprite(const char* path, bool useTransparency)
 {
+	time = Timer();
+
+	position.x = 400;
+	position.y = 0;
+
 	//sprte position n screen
 	srcRect.x = srcRect.y = 0;
-	destRect.x = destRect.y = 0;
+	destRect.x = position.x;
+	destRect.y = position.y;
 	destRect.h = destRect.w = 64;
 
 	setTex(path, useTransparency);
@@ -28,13 +40,37 @@ void Sprite::setTex(const char* path, bool useTransparency)
 }
 
 
-void Sprite::ChangeColor(int r, int g, int b)
+void Sprite::ChangeColor(bool color)
 {
-	SDL_SetTextureColorMod(Texture, r, g, b);
+	black = color;
+
+	if(!color)
+	SDL_SetTextureColorMod(Texture, 255, 255, 255);
+	else
+	SDL_SetTextureColorMod(Texture, 0, 0, 0);
 }
 
 void Sprite::update()
 {
+	if (!(MovePosition == position))
+	{
+		isMoving = true;
+
+		
+
+		Vector2 temp = MovePosition - position;
+
+		float t = sqrt(pow(temp.x, 2) + pow(temp.y, 2));
+
+		position.x += temp.x / t * Speed * time.GetDeltaTime();
+		position.y += temp.y / t * Speed * time.GetDeltaTime();
+
+		if (t < 5)
+			position = MovePosition;
+	}
+	else
+		isMoving = false;
+
 	destRect.x = position.x;
 	destRect.y = position.y;
 }
@@ -42,6 +78,7 @@ void Sprite::update()
 ///Draw on screen
 void Sprite::draw()
 {
+	time.Update();
 	TextureManager::Draw(Texture, destRect);
 }
 

@@ -103,6 +103,18 @@ void Aplication::HandleEvents()
 		InsertedCash = 0;
 	}
 
+	if (input->KeyIsPressed(KEY_SPACE))
+	{
+		if (InsertedCash > 0 && !game->Runing)
+		{
+			--InsertedCash;
+			game->Init();
+		}
+		else if (game->Runing)
+		{
+			game->paused = !game->paused;
+		}
+	}
 
 
 	if (input->KeyIsPressed(KEY_ESCAPE))
@@ -179,7 +191,16 @@ void Aplication::Update()
 	RemovedCashTxt->UpdateText("Removed Credits: " + to_string(RemovedCash));
 	AmountOfTrysTxt->UpdateText("Amount of Plays: " + to_string(AmountOfTrys));
 
+	
 	game->Update();
+
+	if (game->finished)
+	{
+		++AmountOfTrys;
+
+		if (game->Check())
+			InsertedCash += 50;
+	}
 }
 
 void Aplication::Draw()

@@ -1,10 +1,14 @@
-﻿  Game.cpp
+﻿  Aplication.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
 C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\SDL2\include\SDL_stdinc.h(561): message : see previous definition of 'M_PI'
 C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\MathMario.h(70,23): warning C4083: expected 'constant'; found identifier 'disable'
 C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\MathMario.h(387,37): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\MathMario.h(391,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(30,47): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(30,63): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(34,47): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(34,63): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(34,83): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(34,103): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(35,56): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(35,76): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Challenge_GameDev_MarioFernandes.vcxproj -> C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Debug\Challenge_GameDev_MarioFernandes.exe
           1 file(s) copied.
