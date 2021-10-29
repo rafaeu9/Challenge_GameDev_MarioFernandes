@@ -28,6 +28,11 @@ void Sprite::setTex(const char* path, bool useTransparency)
 }
 
 
+void Sprite::ChangeColor(int r, int g, int b)
+{
+	SDL_SetTextureColorMod(Texture, r, g, b);
+}
+
 void Sprite::update()
 {
 	destRect.x = position.x;

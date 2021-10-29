@@ -82,6 +82,10 @@ void Aplication::Init(const char* title, int xpos, int ypos, int width, int heig
 	InsertedCashTxt = new Text(renderer, 20, " ", 0, 0);
 	RemovedCashTxt = new Text(renderer, 20, " ", 0, 30);
 	AmountOfTrysTxt = new Text(renderer, 20, " ", 0, 60);
+	
+	StartTxt = new Text(renderer, 20, "Start (Space)", 0, 600);
+	CreditIn = new Text(renderer, 20, "Credit In (Z) ", 300, 600);
+	CreditOut = new Text(renderer, 20, "Credit Out (X) ", 600, 600);
 
 	Running();
 }
@@ -190,6 +194,12 @@ void Aplication::Draw()
 	SDL_RenderCopy(renderer, RemovedCashTxt->GetTexture(), NULL, &RemovedCashTxt->textRect);
 	SDL_RenderCopy(renderer, AmountOfTrysTxt->GetTexture(), NULL, &AmountOfTrysTxt->textRect);
 	
+	SDL_RenderCopy(renderer, StartTxt->GetTexture(), NULL, &StartTxt->textRect);
+	SDL_RenderCopy(renderer, CreditIn->GetTexture(), NULL, &CreditIn->textRect);
+	SDL_RenderCopy(renderer, CreditOut->GetTexture(), NULL, &CreditOut->textRect);
+		
+		
+
 	game->Draw();
 
 	//Draw on screen

@@ -30,8 +30,8 @@ public:
 	void SetPostion(int x, int y) { position.x = x; position.y = y; }
 
 	Vector2 GetPosition() { return position; }
-
-	void init();
+	
+	void ChangeColor(int r, int g, int b);
 
 	void update();
 

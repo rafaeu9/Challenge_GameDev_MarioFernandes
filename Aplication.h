@@ -41,6 +41,10 @@ private:
 	int AmountOfTrys = 0;
 	Text* AmountOfTrysTxt;
 
+	Text* StartTxt;
+	Text* CreditIn;
+	Text* CreditOut;
+
 	bool isRunning;
 
 	SDL_Window* window;

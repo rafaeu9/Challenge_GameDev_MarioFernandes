@@ -1,6 +1,10 @@
 #pragma once
+#include <stdio.h>
+
 #include "SDL.h"
 #include "Sprite.h"
+
+using namespace std;
 
 class Game
 {
@@ -15,9 +19,9 @@ private:
 
 	SDL_Renderer* renderer;
 
-	Sprite* first;
+	Sprite* Sprites[50];
 
-
+	int grid = 100;
 
 };
 
