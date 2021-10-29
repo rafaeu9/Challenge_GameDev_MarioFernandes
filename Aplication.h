@@ -7,6 +7,7 @@
 
 #include "SDL.h"
 #include "Input.h"
+#include "Text.h"
 
 using namespace std;
 
@@ -30,8 +31,13 @@ private:
 
 
 	int InsertedCash = 0;
+	Text* InsertedCashTxt;
+
 	int RemovedCash = 0;
+	Text* RemovedCashTxt;
+
 	int AmountOfTrys = 0;
+	Text* AmountOfTrysTxt;
 
 	bool isRunning;
 
@@ -39,8 +45,6 @@ private:
 	SDL_Renderer* renderer;
 
 	Input* input;
-
-	
 
 };
 

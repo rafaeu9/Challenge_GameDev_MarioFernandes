@@ -64,10 +64,20 @@ void Aplication::Init(const char* title, int xpos, int ypos, int width, int heig
 	else
 		isRunning = false;
 
-#pragma endregion Create Window
+#pragma endregion Create Window	
 
 
-	input = new Input();		
+	if (TTF_Init())
+	{
+		cout << "Could not initialize SDL_TTF, SDL_TTF Error:" << TTF_GetError() << endl;
+		isRunning = false;
+	}
+
+	input = new Input();	
+
+	InsertedCashTxt = new Text(renderer, 20, " ", 0, 0);
+	RemovedCashTxt = new Text(renderer, 20, " ", 0, 30);
+	AmountOfTrysTxt = new Text(renderer, 20, " ", 0, 60);
 
 	Running();
 }
@@ -141,6 +151,10 @@ void Aplication::Running()
 void Aplication::Update()
 {
 	input->update();
+
+	InsertedCashTxt->UpdateText("Inserted Credits: " + to_string(InsertedCash));
+	RemovedCashTxt->UpdateText("Removed Credits: " + to_string(RemovedCash));
+	AmountOfTrysTxt->UpdateText("Amount of Plays: " + to_string(AmountOfTrys));
 }
 
 void Aplication::Draw()
@@ -150,19 +164,24 @@ void Aplication::Draw()
 
 	SDL_SetRenderDrawColor(renderer, 0, 165, 253, 255);
 
-	//Redraw Map
-
+	
+	SDL_RenderCopy(renderer, InsertedCashTxt->GetTexture(), NULL, &InsertedCashTxt->textRect);
+	SDL_RenderCopy(renderer, RemovedCashTxt->GetTexture(), NULL, &RemovedCashTxt->textRect);
+	SDL_RenderCopy(renderer, AmountOfTrysTxt->GetTexture(), NULL, &AmountOfTrysTxt->textRect);
+	
+	
 
 	//Draw on screen
 	SDL_RenderPresent(renderer);
+
+	getchar();
 }
 
 void Aplication::Clean()
 {
-	
+	SDL_DestroyWindow(window);
+	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
 	printf("GameClean\n");
 }
-
-
 

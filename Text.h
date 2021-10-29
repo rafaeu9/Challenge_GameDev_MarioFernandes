@@ -5,6 +5,7 @@
 #include <vector>
 #include <String>
 
+#include "SDL.h"
 #include "SDL_ttf.h"
 
 using namespace std;

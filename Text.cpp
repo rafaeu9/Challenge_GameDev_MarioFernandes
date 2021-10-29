@@ -17,10 +17,8 @@ Text::Text(SDL_Renderer* r, int size, std::string text, int x, int y)
 
 	SDL_QueryTexture(fontTexture, NULL, NULL, &textRect.w, &textRect.h);
 
-	printf("%s: H1: %d  W1: %d\n", fonttext.c_str(), textRect.h, textRect.w);
+	//printf("%s: H1: %d  W1: %d\n", fonttext.c_str(), textRect.h, textRect.w);
 }
-
-
 
 Text::~Text()
 {
@@ -31,7 +29,7 @@ void Text::UpdateText(string actualText)
 	fonttext = actualText;
 
 	CreateTextTexture();
-	/*SDL_QueryTexture(fontTexture, NULL, NULL, &textRect.w, &textRect.h);*/
+	SDL_QueryTexture(fontTexture, NULL, NULL, &textRect.w, &textRect.h);
 }
 
 void Text::UpdateText(string actualText, SDL_Color col)
