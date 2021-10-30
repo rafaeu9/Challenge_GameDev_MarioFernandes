@@ -2,32 +2,38 @@
 
 Game::Game(SDL_Renderer* rend)
 {
-	time = Timer();
+	m_Time = Timer();
 
-	renderer = rend;
-	BetSprite = new Sprite("Assets/Circle.bmp", true);
-	BetSprite->SetPostion(700,10);
+	//Setup bet chip
+	m_Renderer = rend;
+	m_BetSprite = new Sprite("Assets/Circle.bmp", true);
+	m_BetSprite->SetPostion(700,10);
 
-	txt = new Text(renderer, 20, "Your Bet: ", 580, 35);
-	result = new Text(renderer, 40, " ", 300, 100);
-	WhiteCount = new Text(renderer, 20, " ", 100, 550);
-	blackCount = new Text(renderer, 20, " ", 400, 550);
+
+	//Setup text
+	m_Txt = new Text(m_Renderer, 20, "Your Bet: ", 580, 35);
+	m_Result = new Text(m_Renderer, 40, " ", 300, 100);
+	m_WhiteCount = new Text(m_Renderer, 20, " ", 100, 550);
+	m_BlackCount = new Text(m_Renderer, 20, " ", 400, 550);
 }
 
 void Game::Init()
 {
-	result->UpdateText(" ");
-	WhiteCount->UpdateText(" ");
-	blackCount->UpdateText(" ");
+	m_Result->UpdateText(" ");
+	m_WhiteCount->UpdateText(" ");
+	m_BlackCount->UpdateText(" ");
 
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < m_AmountOfChips; i++)
 	{
 		Sprites[i] = new Sprite("Assets/Circle.bmp", true);
+
+		//Give chips a random color
 		Sprites[i]->ChangeColor(0 == rand() % 2);
-		mask[i] = Sprites[i]->GetBlack();
-		//Sprites[i]->SetPostion(0, 300);
+
+		m_Mask[i] = Sprites[i]->GetBlack();
 	}
 
+	//Place chips in the grid position
 	int y = 150;
 	int o = 0;
 	for (int i = 0; i < 5; i++)
@@ -45,23 +51,24 @@ void Game::Init()
 		y += 75;
 	}
 
-	currentsprite = 0;
+	m_CurrentSprite = 0;
+
 	Runing = true;
 }
 
 void Game::Update()
 {
-	time.Update();
+	m_Time.Update();
 
-	BetSprite->ChangeColor(bet);
+	m_BetSprite->ChangeColor(m_Bet);
 	
 	if (Sprites[0] != NULL && !paused && Runing)
 	{
-		if (currentsprite < 50)
+		if (m_CurrentSprite < m_AmountOfChips)
 		{
-			Sprites[currentsprite]->update(&time);
-			if (!Sprites[currentsprite]->isMoving)
-				currentsprite++;
+			Sprites[m_CurrentSprite]->update(&m_Time);
+			if (!Sprites[m_CurrentSprite]->GetMoving())
+				m_CurrentSprite++;
 		}
 		else
 			finished = true;
@@ -73,15 +80,15 @@ void Game::Update()
 void Game::Draw()
 {
 
-	BetSprite->draw();
-	SDL_RenderCopy(renderer, txt->GetTexture(), NULL, &txt->textRect);
-	SDL_RenderCopy(renderer, WhiteCount->GetTexture(), NULL, &WhiteCount->textRect);
-	SDL_RenderCopy(renderer, blackCount->GetTexture(), NULL, &blackCount->textRect);
-	SDL_RenderCopy(renderer, result->GetTexture(), NULL, &result->textRect);
+	m_BetSprite->draw();
+	SDL_RenderCopy(m_Renderer, m_Txt->GetTexture(), NULL, &m_Txt->textRect);
+	SDL_RenderCopy(m_Renderer, m_WhiteCount->GetTexture(), NULL, &m_WhiteCount->textRect);
+	SDL_RenderCopy(m_Renderer, m_BlackCount->GetTexture(), NULL, &m_BlackCount->textRect);
+	SDL_RenderCopy(m_Renderer, m_Result->GetTexture(), NULL, &m_Result->textRect);
 	
 	
 	if (Sprites[0] != NULL)
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < m_AmountOfChips; i++)
 	{
 		Sprites[i]->draw();
 	}
@@ -95,46 +102,30 @@ bool Game::Check()
 	finished = false;
 	paused = false;		
 
-	/*for (int i = 0; i < 3; i++)
-	{
-		tempcheck = true;
-		for (int w = 0; w < 50; w++)
-		{
-			if (maskCheck[i][w] && maskCheck[i][w] != mask[w])
-			{
-				tempcheck = false;
-				break;
-			}			
-		}
-
-		if (tempcheck)
-			return true;
-		
-	}*/
-
+	
 	int Whites = 0;
 	int Black = 0;
 
+	//Count Black and white Chips
 	for (int w = 0; w < 50; w++)
 	{
-		if (mask[w])
+		if (m_Mask[w])
 			++Black;
 		else
 			++Whites;
 	}
 
-	WhiteCount->UpdateText("White amount: " + to_string(Whites));
-	blackCount->UpdateText("White amount : " + to_string(Black));
+	m_WhiteCount->UpdateText("White amount: " + to_string(Whites));
+	m_BlackCount->UpdateText("White amount : " + to_string(Black));
 
-
-
-	if (bet && Black > Whites || !bet && Black < Whites)
+	//Detect if player wins
+	if (m_Bet && Black > Whites || !m_Bet && Black < Whites)
 	{
-		result->UpdateText("You Win!!!");
+		m_Result->UpdateText("You Win!!!");
 		return true;
 	}
 	
-	result->UpdateText("Lost");
+	m_Result->UpdateText("Lost");
 	return false;
 
 }
@@ -143,8 +134,8 @@ void Game::ChangeBet()
 {
 	if (!Runing)
 	{
-		bet = !bet;
+		m_Bet = !m_Bet;
 
-		BetSprite->ChangeColor(bet);
+		m_BetSprite->ChangeColor(m_Bet);
 	}
 }

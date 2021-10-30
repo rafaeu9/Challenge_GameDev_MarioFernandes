@@ -16,62 +16,54 @@ public:
 	void Update();
 	void Draw();
 
+	/// <summary>
+	/// Check if player lost or win
+	/// </summary>
+	/// <returns></returns>
 	bool Check();
 
+	/// <summary>
+	/// Switch the betting color 
+	/// </summary>
 	void ChangeBet();
 
+	//Game States
 	bool Runing = false;
-
 	bool paused = false;
-
 	bool finished = false;
 
 private:
 
-	int currentsprite = 0;
+	
 
-	SDL_Renderer* renderer;
-	Timer time;
+	SDL_Renderer* m_Renderer;
+	Timer m_Time;
 
-
+	int m_AmountOfChips = 50;
+	//List Of chips
 	Sprite* Sprites[50];
+	//List of chips in true or false
+	bool m_Mask[50];
 
-	Sprite* BetSprite;
-	bool bet = false;
-	Text* txt;
-	Text* result;
-	Text* WhiteCount;
-	Text* blackCount;
+	int m_CurrentSprite = 0;
 
-	int grid = 100;
+	//Space Between chips
+	int m_Grid = 100;
 
-	bool mask[50];
+	//Bet Chip
+	Sprite* m_BetSprite;
+	bool m_Bet = false;
 
-	bool maskCheck[3][50] = {
-	{
-		1,1,1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,1,1
-	},
-	{
-		0,0,0,0,1,1,0,0,0,0,
-		0,0,0,0,1,1,0,0,0,0,
-		0,0,0,0,1,1,0,0,0,0,
-		0,0,0,0,1,1,0,0,0,0,
-		0,0,0,0,1,1,0,0,0,0
-	},
-	{
-		0,0,0,0,0,0,0,0,0,0,
-		0,0,0,0,0,0,0,0,0,0,
-		1,1,1,1,1,1,1,1,1,1,
-		0,0,0,0,0,0,0,0,0,0,
-		0,0,0,0,0,0,0,0,0,0
-	}
-	};
+	//Game text
+	Text* m_Txt;
+	Text* m_Result;
+	Text* m_WhiteCount;
+	Text* m_BlackCount;
 
+	
 
+	
 
+	
 };
 

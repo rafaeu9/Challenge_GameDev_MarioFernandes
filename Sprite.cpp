@@ -7,92 +7,96 @@ Sprite::Sprite()
 {
 	
 
-	position.x = 400;
-	position.y = 0;
+	m_Position.x = 400;
+	m_Position.y = 0;
 
-	//sprte position n screen
+	//sprite position n screen
 	srcRect.x = srcRect.y = 0;
-	destRect.x = position.x;
-	destRect.y = position.y;
+	destRect.x = m_Position.x;
+	destRect.y = m_Position.y;
 	destRect.h = destRect.w = 64;
 }
 
 Sprite::Sprite(const char* path, bool useTransparency)
 {
 
-	position.x = 400;
-	position.y = 0;
+	m_Position.x = 400;
+	m_Position.y = 0;
 
-	//sprte position n screen
+	//sprite position n screen
 	srcRect.x = srcRect.y = 0;
-	destRect.x = position.x;
-	destRect.y = position.y;
+	destRect.x = m_Position.x;
+	destRect.y = m_Position.y;
 	destRect.h = destRect.w = 64;
 
 	setTex(path, useTransparency);
 }
 
+Sprite::~Sprite()
+{
+	SDL_DestroyTexture(m_Texture);
+}
+
 //Load Image
 void Sprite::setTex(const char* path, bool useTransparency)
 {
-	Texture = TextureManager::LoadBMPTexture(path,&destRect, useTransparency);	
+	m_Texture = TextureManager::LoadBMPTexture(path,&destRect, useTransparency);	
 }
 
 void Sprite::SetPostion(int x, int y)
 {
-	position.x = x; 
-	position.y = y; 
-	MovePosition.x = x; 
-	MovePosition.y = y;
+	m_Position.x = x; 
+	m_Position.y = y; 
+	m_MovePosition.x = x; 
+	m_MovePosition.y = y;
 
-	destRect.x = position.x;
-	destRect.y = position.y;
+	destRect.x = m_Position.x;
+	destRect.y = m_Position.y;
 
 }
 
 
 void Sprite::ChangeColor(bool color)
 {
-	black = color;
+	m_Black = color;
 
 	if(!color)
-	SDL_SetTextureColorMod(Texture, 255, 255, 255);
+	SDL_SetTextureColorMod(m_Texture, 255, 255, 255);
 	else
-	SDL_SetTextureColorMod(Texture, 0, 0, 0);
+	SDL_SetTextureColorMod(m_Texture, 0, 0, 0);
 }
 
 void Sprite::update(Timer* time)
 {
-	if (!(MovePosition == position))
+	if (!(m_MovePosition == m_Position))
 	{
-		isMoving = true;
+		m_isMoving = true;
 
-		
+		//Get Delta vector
+		Vector2 temp = m_MovePosition - m_Position;
 
-		Vector2 temp = MovePosition - position;
-
+		//Get Magnitude
 		float t = sqrt(pow(temp.x, 2) + pow(temp.y, 2));
 
-		position.x += temp.x / t * Speed * time->GetDeltaTime();
-		position.y += temp.y / t * Speed * time->GetDeltaTime();
+		//Update the current position based on the unit vector * time and speed 
+		m_Position.x += temp.x / t * m_Speed * time->GetDeltaTime();
+		m_Position.y += temp.y / t * m_Speed * time->GetDeltaTime();
 
+		//Snap to position if close
 		if (t < 5)
-			position = MovePosition;
+			m_Position = m_MovePosition;
 	}
 	else
-		isMoving = false;
+		m_isMoving = false;
 
-	destRect.x = position.x;
-	destRect.y = position.y;
+	//Update texture position
+	destRect.x = m_Position.x;
+	destRect.y = m_Position.y;
 }
 
 ///Draw on screen
 void Sprite::draw()
 {	
-	TextureManager::Draw(Texture, destRect);
+	TextureManager::Draw(m_Texture, destRect);
 }
 
-void Sprite::rotation()
-{	
-
-}

@@ -13,9 +13,22 @@ using namespace std;
 class Text
 {
 public:
-	Text(SDL_Renderer* r, int size, std::string text, int x, int y);
-	~Text();
 
+	/// <summary>
+	/// Set up Text
+	/// </summary>
+	/// <param name="Renderer"></param>
+	/// <param name="Size"></param>
+	/// <param name="Text"></param>
+	/// <param name="x"></param>
+	/// <param name="y"></param>
+	Text(SDL_Renderer* r, int size, std::string text, int x, int y);
+	~Text();	
+
+	/// <summary>
+	/// Change Text
+	/// </summary>
+	/// <param name="actualText"></param>
 	void UpdateText(std::string actualText);
 	void UpdateText(std::string actualText, SDL_Color col);
 

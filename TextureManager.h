@@ -14,9 +14,6 @@ public:
 
 	static SDL_Texture* LoadBMPTexture(const char* FileName, SDL_Rect* destRect = nullptr, bool Transparency = false);
 
-	static SDL_Texture* LoadIMGTexture(const char* FileName, SDL_Rect* destRect = nullptr, bool Transparency = false);
-
 	static void Draw(SDL_Texture* tex, SDL_Rect dest);
-
 };
 

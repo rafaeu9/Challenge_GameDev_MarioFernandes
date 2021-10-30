@@ -16,12 +16,11 @@ Text::Text(SDL_Renderer* r, int size, std::string text, int x, int y)
 	CreateTextTexture();
 
 	SDL_QueryTexture(fontTexture, NULL, NULL, &textRect.w, &textRect.h);
-
-	//printf("%s: H1: %d  W1: %d\n", fonttext.c_str(), textRect.h, textRect.w);
 }
 
 Text::~Text()
 {
+	SDL_DestroyTexture(fontTexture);
 }
 
 void Text::UpdateText(string actualText)
