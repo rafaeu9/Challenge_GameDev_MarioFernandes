@@ -2,6 +2,9 @@
 
 Game::Game(SDL_Renderer* rend)
 {
+	//Set up random seed
+	srand(time(0));
+
 	m_Time = Timer();
 
 	//Setup bet chip
