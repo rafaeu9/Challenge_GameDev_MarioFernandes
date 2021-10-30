@@ -1,7 +1,7 @@
 #pragma once
+
 #include "TextureManager.h"
 #include "MathMario.h"
-#include "SDL.h"
 #include "timer.h"
 
 

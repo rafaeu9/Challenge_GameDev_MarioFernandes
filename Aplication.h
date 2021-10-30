@@ -1,11 +1,17 @@
 #pragma once
+
+#ifdef _WIN32
+#include "SDL.h"
+#else
+#include "SDL2/SDL.h"
+#endif // _WIN32
+
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>
 #include <vector>
 #include <String>
 
-#include "SDL.h"
 #include "Input.h"
 #include "Text.h"
 #include "TextureManager.h"
