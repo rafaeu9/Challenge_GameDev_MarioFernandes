@@ -30,6 +30,9 @@ void Input::update()
 		case SDLK_x:
 			m_KeysPressed[KEY_X] = true;
 			break;
+		case SDLK_c:
+			m_KeysPressed[KEY_C] = true;
+			break;
 		default:
 			break;
 		}

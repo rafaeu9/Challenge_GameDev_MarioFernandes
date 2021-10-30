@@ -5,7 +5,7 @@
 
 Sprite::Sprite()
 {
-	time = Timer();
+	
 
 	position.x = 400;
 	position.y = 0;
@@ -19,7 +19,6 @@ Sprite::Sprite()
 
 Sprite::Sprite(const char* path, bool useTransparency)
 {
-	time = Timer();
 
 	position.x = 400;
 	position.y = 0;
@@ -39,6 +38,18 @@ void Sprite::setTex(const char* path, bool useTransparency)
 	Texture = TextureManager::LoadBMPTexture(path,&destRect, useTransparency);	
 }
 
+void Sprite::SetPostion(int x, int y)
+{
+	position.x = x; 
+	position.y = y; 
+	MovePosition.x = x; 
+	MovePosition.y = y;
+
+	destRect.x = position.x;
+	destRect.y = position.y;
+
+}
+
 
 void Sprite::ChangeColor(bool color)
 {
@@ -50,7 +61,7 @@ void Sprite::ChangeColor(bool color)
 	SDL_SetTextureColorMod(Texture, 0, 0, 0);
 }
 
-void Sprite::update()
+void Sprite::update(Timer* time)
 {
 	if (!(MovePosition == position))
 	{
@@ -62,8 +73,8 @@ void Sprite::update()
 
 		float t = sqrt(pow(temp.x, 2) + pow(temp.y, 2));
 
-		position.x += temp.x / t * Speed * time.GetDeltaTime();
-		position.y += temp.y / t * Speed * time.GetDeltaTime();
+		position.x += temp.x / t * Speed * time->GetDeltaTime();
+		position.y += temp.y / t * Speed * time->GetDeltaTime();
 
 		if (t < 5)
 			position = MovePosition;
@@ -77,8 +88,7 @@ void Sprite::update()
 
 ///Draw on screen
 void Sprite::draw()
-{
-	time.Update();
+{	
 	TextureManager::Draw(Texture, destRect);
 }
 

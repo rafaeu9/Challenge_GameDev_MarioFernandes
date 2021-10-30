@@ -18,7 +18,7 @@ private:
 
 	bool black = false;
 
-	Timer time;
+	
 
 public:
 
@@ -31,8 +31,8 @@ public:
 
 	void setTex(const char* path, bool useTransparency = false);
 	
-	void SetPostion(int x, int y) { position.x = x; position.y = y; MovePosition.x = x; MovePosition.y = y; }
-	void SetMovePosition(int x, int y) { MovePosition.x = x; MovePosition.y = y; time.Reset(); }
+	void SetPostion(int x, int y);
+	void SetMovePosition(int x, int y) { MovePosition.x = x; MovePosition.y = y;}
 
 	bool GetBlack() { return black; }
 
@@ -40,7 +40,7 @@ public:
 	
 	void ChangeColor(bool color);
 
-	void update();
+	void update(Timer* time);
 
 	void draw();
 

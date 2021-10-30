@@ -103,6 +103,11 @@ void Aplication::HandleEvents()
 		InsertedCash = 0;
 	}
 
+	if (input->KeyIsPressed(KEY_C))
+	{
+		game->ChangeBet();
+	}
+
 	if (input->KeyIsPressed(KEY_SPACE))
 	{
 		if (InsertedCash > 0 && !game->Runing)
