@@ -1,16 +1,15 @@
 #pragma once
 #include <iostream>
 #include <stdio.h>
-#include <conio.h>
 #include <vector>
-#include <String>
+
 
 #ifdef _WIN32
-#include "SDL2/include/SDL.h"
-#include "SDL2/include/SDL_ttf.h"
+#include "SDL.h"
+#include "SDL_ttf.h"
 #else
-#include "SDL2/include/SDL.h"
-#include "SDL2/include/SDL_ttf.h"
+#include <SDL2/include/SDL.h>
+#include <SDL2/include/SDL_ttf.h>
 #endif // _WIN32
 
 

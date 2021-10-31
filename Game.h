@@ -1,5 +1,6 @@
 #pragma once
 #include <stdio.h>
+#include <string>
 
 #include "Sprite.h"
 #include "Text.h"
