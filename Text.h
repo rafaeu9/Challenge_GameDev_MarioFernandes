@@ -6,11 +6,11 @@
 #include <String>
 
 #ifdef _WIN32
-#include "SDL.h"
-#include "SDL_ttf.h"
+#include "SDL2/include/SDL.h"
+#include "SDL2/include/SDL_ttf.h"
 #else
-#include "SDL2/SDL.h"
-#include "SDL2_ttf/SDL_ttf.h"
+#include "SDL2/include/SDL.h"
+#include "SDL2/include/SDL_ttf.h"
 #endif // _WIN32
 
 

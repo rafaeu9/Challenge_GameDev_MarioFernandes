@@ -14,16 +14,9 @@ C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\MathMari
 C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\MathMario.h(391,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(47,58): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(47,80): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Game.cpp(99,7): warning C4101: 'tempcheck': unreferenced local variable
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Game.cpp(6,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Game.cpp(102,7): warning C4101: 'tempcheck': unreferenced local variable
   Input.cpp
-  main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
-C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\SDL2\include\SDL_stdinc.h(561): message : see previous definition of 'M_PI'
-C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\MathMario.h(70,23): warning C4083: expected 'constant'; found identifier 'disable'
-C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\MathMario.h(387,37): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\MathMario.h(391,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(47,58): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(47,80): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Sprite.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
 C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\SDL2\include\SDL_stdinc.h(561): message : see previous definition of 'M_PI'
@@ -47,7 +40,15 @@ C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.c
 C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.cpp(94,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   Text.cpp
   TextureManager.cpp
-  timer.cpp
+  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': macro redefinition
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\SDL2\include\SDL_stdinc.h(561): message : see previous definition of 'M_PI'
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\MathMario.h(70,23): warning C4083: expected 'constant'; found identifier 'disable'
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\MathMario.h(387,37): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\MathMario.h(391,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(47,58): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Sprite.h(47,80): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Generating Code...
+  LINK : C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Debug\Challenge_GameDev_MarioFernandes.exe not found or not built by the last incremental link; performing full link
   Challenge_GameDev_MarioFernandes.vcxproj -> C:\Users\rafae\Desktop\FABAMAQ desafio\Challenge_GameDev_MarioFernandes\Debug\Challenge_GameDev_MarioFernandes.exe
           1 file(s) copied.

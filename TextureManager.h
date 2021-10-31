@@ -4,9 +4,9 @@
 #include <string>
 
 #ifdef _WIN32
-#include "SDL.h"
+#include "SDL2/include/SDL.h"
 #else
-#include "SDL2/SDL.h"
+#include "SDL2/include/SDL2/SDL.h"
 #endif // _WIN32
 
 
